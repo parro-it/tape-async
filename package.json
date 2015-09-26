@@ -7,6 +7,9 @@
   },
   "version": "1.0.2",
   "main": "src/index.js",
+  "bin": {
+    "tape": "node_modules/tape/bin/tape"
+  },
   "engines": {
     "node": ">=4.1"
   },
