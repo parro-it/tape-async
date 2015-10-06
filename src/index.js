@@ -1,6 +1,15 @@
 'use strict';
-
+// patch to avoid error using in electron
+// waiting for
+const mockery = require('mockery');
+mockery.enable({
+  warnOnReplace: false,
+  warnOnUnregistered: false
+});
+mockery.registerMock('string.prototype.trim', String.prototype.trim);
 const test = require('tape');
+mockery.disable();
+
 const co = require('co');
 
 function createTest(t, title, cb) {
