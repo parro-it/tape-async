@@ -6,6 +6,7 @@
   "engines": {
     "node": ">=4.1"
   },
+  "license": "MIT",
   "dependencies": {
     "co": "^4.6.0",
     "is-generator": "^1.0.2",
@@ -46,6 +47,5 @@
   },
   "files": [
     "index.js"
-  ],
-  "license": "MIT"
+  ]
 }
