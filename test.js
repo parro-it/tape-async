@@ -64,6 +64,26 @@ test('log test failures', function *(t) {
   }
 });
 
+test('support tests end in cb', function *(t) {
+  const result = yield execa('node', ['fixtures/end-in-cb']);
+  t.equal(result.stdout, `TAP version 13
+# first test
+first test start
+ok 1 should be equal
+first test end
+# second test
+second test start
+ok 2 should be equal
+second test end
+
+1..2
+# tests 2
+# pass  2
+
+# ok
+`);
+});
+
 test('support generators with plan', function *(t) {
   t.plan(1);
   const result = yield Promise.resolve(42);

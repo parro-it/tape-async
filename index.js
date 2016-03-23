@@ -24,12 +24,17 @@ tape.Test.prototype._end = (
   tape.Test.prototype.end
 );
 
+tape.Test.prototype.deferred = function deferred() {
+  this._deferred = true;
+};
+
 tape.Test.prototype.run = function run() {
   if (!this._cb || this._skip) {
     return this._end();
   }
 
   this.emit('prerun');
+  this._deferred = false;
 
   const success = () => setImmediate(() => {
     this._end();
@@ -64,5 +69,9 @@ tape.Test.prototype.run = function run() {
       .catch(failure);
   }
 
-  return success();
+  if (!this._deferred) {
+    return success();
+  }
+
+  return true;
 };
