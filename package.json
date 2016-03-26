@@ -2,7 +2,7 @@
   "name": "tape-async",
   "description": "A lite wrapper around tape to simplify async testing.",
   "repository": "parro-it/tape-async",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "engines": {
     "node": ">=4.1"
   },
