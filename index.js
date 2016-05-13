@@ -70,7 +70,7 @@ tape.Test.prototype.run = function run() {
   }
 
   if (!this._deferred) {
-    return success();
+    this.emit('run');
   }
 
   return true;
