@@ -8,6 +8,10 @@ test('support async await functions', function *(t) {
   t.equal(result.stdout.split('\n')[2], 'ok 1 should be equal');
 });
 
+test('test.only is a function', function(t) {
+  t.equal(typeof test.only, 'function');
+});
+
 
 test('support normal cb termination', function *(t) {
   try {
