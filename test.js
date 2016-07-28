@@ -124,7 +124,7 @@ test('support async function', function(t) {
 test('support async function with plan', function(t) {
   const result = 42;
   t.plan(1);
-  setTimeout(() => {
+  process.nextTick(() => {
     t.equal(result, 42);
   });
 });
