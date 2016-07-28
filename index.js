@@ -12,7 +12,6 @@ process.on('uncaughtException', err => {
   process.exit(-1);
 });
 
-
 process.on('unhandledRejection', err => {
   process.stderr.write(`\nUnhandled rejection occurred. One of your test may have failed silently.\n${err.stack}\n`);
   process.exit(-1);
@@ -70,7 +69,6 @@ tape.Test.prototype.run = function run() {
   }
 
   if (!this._deferred) {
-    this._end();
     this.emit('run');
   }
 
