@@ -84,6 +84,7 @@ Test suite fails with a generic error message and a stack trace.
 
   test.only('this test will be the only one', t => {
     t.equal(42, 42);
+    t.end();
   });
 ```
 
