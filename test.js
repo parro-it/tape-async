@@ -96,13 +96,35 @@ test('support sync function with plan', function(t) {
   t.equal(result, 42);
 });
 
-test('support generators', function *(t) {
+test('support generators without explicit end', function *(t) {
   const result = yield Promise.resolve(42);
   t.equal(result, 42);
+});
+
+test('support generators with explicit end', function *(t) {
+  const result = yield Promise.resolve(42);
+  t.equal(result, 42);
+  t.end();
 });
 
 test('support sync function', function(t) {
   const result = 42;
   t.equal(result, 42);
+  t.end();
 });
 
+test('support async function', function(t) {
+  const result = 42;
+  setTimeout(() => {
+    t.equal(result, 42);
+    t.end();
+  });
+});
+
+test('support async function with plan', function(t) {
+  const result = 42;
+  t.plan(1);
+  setTimeout(() => {
+    t.equal(result, 42);
+  });
+});
