@@ -15,17 +15,18 @@
   },
   "author": "Andrea Parodi",
   "scripts": {
-    "test": "node test | faucet && eslint ."
+    "test": "node --harmony test | faucet && eslint ."
   },
   "eslintConfig": {
     "extends": [
       "js"
     ],
-    "env": {
-      "es6": true
-    },
+    "env": { "es6": true },
     "parserOptions": {
-      "ecmaVersion": 6
+      "ecmaVersion": 8
+    },
+    "rules" : {
+      "no-param-reassign": "off"
     }
   },
   "babel": {

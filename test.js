@@ -1,7 +1,7 @@
 'use strict';
 const test = require('.');
 const execa = require('execa');
-
+const args = ['--harmony'];
 
 test('support async await functions', function *(t) {
   const result = yield execa('babel-node', ['fixtures/async-await-test']);
@@ -16,7 +16,7 @@ test('test.only is a function', function(t) {
 
 test('support normal cb termination', function *(t) {
   try {
-    yield execa('node', ['fixtures/failing-test']);
+    yield execa('node', args.concat(['fixtures/failing-test']));
     t.fail('Failure expected');
   } catch (err) {
     t.equal(err.stdout.split('\n')[2], 'not ok 1 should be equal');
@@ -26,7 +26,7 @@ test('support normal cb termination', function *(t) {
 
 test('log unhandled exceptions', function *(t) {
   try {
-    yield execa('node', ['fixtures/unhandled-exception-test']);
+    yield execa('node', args.concat(['fixtures/unhandled-exception-test']));
     t.fail('Failure expected');
   } catch (err) {
     t.equal(err.stderr.slice(0, 30), '\nUnhandled exception occurred.');
@@ -35,7 +35,7 @@ test('log unhandled exceptions', function *(t) {
 
 test('log unhandled rejection', function *(t) {
   try {
-    yield execa('node', ['fixtures/unhandled-rejection-test']);
+    yield execa('node', args.concat(['fixtures/unhandled-rejection-test']));
     t.fail('Failure expected');
   } catch (err) {
     t.equal(err.stderr.slice(0, 30), '\nUnhandled rejection occurred.');
@@ -44,7 +44,7 @@ test('log unhandled rejection', function *(t) {
 
 test('log unexpected rejections', function *(t) {
   try {
-    yield execa('node', ['fixtures/unexpected-rejection-test']);
+    yield execa('node', args.concat(['fixtures/unexpected-rejection-test']));
     t.fail('Failure expected');
   } catch (err) {
     t.equal(err.stdout.split('\n')[2], 'not ok 1 Error: unexpected');
@@ -53,7 +53,7 @@ test('log unexpected rejections', function *(t) {
 
 test('log unexpected exceptions', function *(t) {
   try {
-    yield execa('node', ['fixtures/unexpected-exception-test']);
+    yield execa('node', args.concat(['fixtures/unexpected-exception-test']));
     t.fail('Failure expected');
   } catch (err) {
     t.equal(err.stdout.split('\n')[2], 'not ok 1 Error: unexpected');
@@ -62,7 +62,7 @@ test('log unexpected exceptions', function *(t) {
 
 test('log test failures', function *(t) {
   try {
-    yield execa('node', ['fixtures/failing-test']);
+    yield execa('node', args.concat(['fixtures/failing-test']));
     t.fail('Failure expected');
   } catch (err) {
     t.equal(err.stdout.split('\n')[2], 'not ok 1 should be equal');
@@ -70,7 +70,7 @@ test('log test failures', function *(t) {
 });
 
 test('support tests end in cb', function *(t) {
-  const result = yield execa('node', ['fixtures/end-in-cb']);
+  const result = yield execa('node', args.concat(['fixtures/end-in-cb']));
   t.equal(result.stdout, `TAP version 13
 # first test
 first test start
