@@ -38,11 +38,11 @@
     "babel-cli": "^6.6.5",
     "babel-plugin-syntax-async-functions": "^6.5.0",
     "babel-plugin-transform-async-to-generator": "^6.7.0",
-    "eslint": "^2.4.0",
+    "eslint": "^3.18.0",
     "eslint-config-js": "^5.0.0",
-    "execa": "^0.2.2",
+    "execa": "^0.6.3",
     "faucet": "0.0.1",
-    "sleep-promise": "^1.0.0",
+    "sleep-promise": "^2.0.0",
     "tape": "^4.5.0"
   },
   "files": [
