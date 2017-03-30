@@ -3,7 +3,7 @@ const execa = require('execa');
 const test = require('.');
 
 test('support async await functions', function * (t) {
-	const result = yield execa('babel-node', ['fixtures/async-await-test']);
+	const result = yield execa('node', ['fixtures/async-await-test']);
 	t.equal(result.stdout.split('\n')[2], 'ok 1 should be equal');
 });
 

@@ -17,20 +17,10 @@
   "scripts": {
     "test": "node test | faucet && xo --ignore examples/example.js"
   },
-  "babel": {
-    "plugins": [
-      "syntax-async-functions",
-      "transform-async-to-generator"
-    ]
-  },
   "devDependencies": {
-    "babel-cli": "^6.6.5",
-    "babel-plugin-syntax-async-functions": "^6.5.0",
-    "babel-plugin-transform-async-to-generator": "^6.7.0",
     "execa": "^0.6.3",
     "faucet": "0.0.1",
     "sleep-promise": "^2.0.0",
-    "tape": "^4.5.0",
     "xo": "^0.18.1"
   },
   "files": [
