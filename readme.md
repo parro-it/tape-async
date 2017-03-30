@@ -1,5 +1,7 @@
 # tape-async
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/parro-it/tape-async.svg)](https://greenkeeper.io/)
+
 > A lite wrapper around [tape](https://github.com/substack/tape) to simplify async testing.
 
 [![Travis Build Status](https://img.shields.io/travis/parro-it/tape-async.svg)](http://travis-ci.org/parro-it/tape-async)
@@ -84,6 +86,7 @@ Test suite fails with a generic error message and a stack trace.
 
   test.only('this test will be the only one', t => {
     t.equal(42, 42);
+    t.end();
   });
 ```
 
