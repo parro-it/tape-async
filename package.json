@@ -15,18 +15,7 @@
   },
   "author": "Andrea Parodi",
   "scripts": {
-    "test": "node test | faucet && eslint ."
-  },
-  "eslintConfig": {
-    "extends": [
-      "js"
-    ],
-    "env": {
-      "es6": true
-    },
-    "parserOptions": {
-      "ecmaVersion": 6
-    }
+    "test": "node test | faucet && xo --ignore examples/example.js"
   },
   "babel": {
     "plugins": [
@@ -38,12 +27,11 @@
     "babel-cli": "^6.6.5",
     "babel-plugin-syntax-async-functions": "^6.5.0",
     "babel-plugin-transform-async-to-generator": "^6.7.0",
-    "eslint": "^3.18.0",
-    "eslint-config-js": "^5.0.0",
     "execa": "^0.6.3",
     "faucet": "0.0.1",
     "sleep-promise": "^2.0.0",
-    "tape": "^4.5.0"
+    "tape": "^4.5.0",
+    "xo": "^0.18.1"
   },
   "files": [
     "index.js"

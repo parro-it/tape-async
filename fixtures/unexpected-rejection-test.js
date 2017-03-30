@@ -2,5 +2,5 @@
 const test = require('..');
 
 test('this test will fail', function * () {
-  throw new Error('unexpected');
+	throw new Error('unexpected');
 });

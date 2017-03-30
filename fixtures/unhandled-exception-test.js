@@ -2,7 +2,7 @@
 const test = require('..');
 
 test('this test will fail', () => {
-  setTimeout(()=>{
-    throw new Error('unhandled');
-  }, 1);
+	setTimeout(() => {
+		throw new Error('unhandled');
+	}, 1);
 });
