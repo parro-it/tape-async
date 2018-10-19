@@ -29,8 +29,8 @@ npm install -D tape-async
   });
 ```
 
-`tape-async` supports future ES async-await syntax.
-You are in charge to provide traspilation of your test code.
+`tape-async` supports async-await syntax.
+You are in charge of transpiling your test code.
 
 ## Use with `generators`
 
@@ -48,7 +48,7 @@ You are in charge to provide traspilation of your test code.
 They run using [co](https://github.com/tj/co).
 
 
-## It catch unhandled errors
+## It catches unhandled errors
 
 ```js
   const test = require('tape-async');
@@ -63,7 +63,7 @@ Unhandled errors in your tests are automatically covered.
 Test suite fails with a generic error message and a stack trace.
 
 
-## It catch unhandled `Promise` rejections
+## It catches unhandled `Promise` rejections
 
 ```js
   const test = require('tape-async');
@@ -72,11 +72,11 @@ Test suite fails with a generic error message and a stack trace.
   });
 ```
 
-Uncatched Promise rejection in your tests are automatically covered.
+Uncatched Promise rejections in your tests are automatically covered.
 Test suite fails with a generic error message and a stack trace.
 
 
-## It support every [tape](https://github.com/substack/tape) features.
+## It supports every [tape](https://github.com/substack/tape) features.
 
 ```js
   const test = require('tape-async');
@@ -97,6 +97,7 @@ use every feature you are used to.
 # Related projects
 
 * [tape](https://github.com/substack/tape) - tap-producing test harness for node and browsers.
+* [tape-await](https://ghub.io/tape-await) - another async tape implementation.
 
 # License
 The MIT License (MIT)
