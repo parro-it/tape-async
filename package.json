@@ -10,7 +10,7 @@
   "dependencies": {
     "co": "^4.6.0",
     "is-generator": "^1.0.2",
-    "is-promise": "^2.1.0",
+    "is-promise": "^2.2.0",
     "tape": "^4.5.0"
   },
   "author": "Andrea Parodi",
