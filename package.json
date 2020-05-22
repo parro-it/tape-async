@@ -18,7 +18,7 @@
     "test": "node test | faucet && xo --ignore examples/example.js"
   },
   "devDependencies": {
-    "execa": "^0.8.0",
+    "execa": "^4.0.2",
     "faucet": "0.0.1",
     "sleep-promise": "^2.0.0",
     "xo": "^0.18.1"
