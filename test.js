@@ -1,4 +1,3 @@
-
 "use strict";
 const execa = require("execa");
 const test = require(".");

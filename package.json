@@ -15,10 +15,8 @@
   },
   "author": "Andrea Parodi",
   "scripts": {
-
     "test": "node --trace-warnings test && prettier --check *.js",
     "format": "prettier --write *.js"
-
   },
   "devDependencies": {
     "execa": "^0.8.0",
