@@ -1,9 +1,15 @@
 "use strict";
 
-const tape = require("tape");
-const isGenerator = require("is-generator");
-const isPromise = require("is-promise");
-const co = require("co");
+
+const tape = require('tape');
+const isGenerator = require('is-generator');
+const isPromise = require('is-promise');
+const defined = require('defined');
+const bind = require('function-bind');
+const has = require('has');
+const isEnumerable = bind.call(Function.call, Object.prototype.propertyIsEnumerable);
+const co = require('co');
+
 
 module.exports = tape;
 
@@ -74,4 +80,70 @@ tape.Test.prototype.run = function () {
 	}
 
 	return true;
+};
+
+tape.Test.prototype.throws = async function(fn, expected, msg, extra) {
+  var caught = undefined;
+  var message = undefined;
+  var passed = undefined;
+
+  if (typeof expected === 'string') {
+    msg = expected;
+    expected = undefined;
+  }
+
+  try {
+    await fn();
+  } catch (err) {
+    caught = { error: err };
+    if ((err !== null) && (!isEnumerable(err, 'message') || !has(err, 'message'))) {
+      message = err.message;
+      delete err.message;
+      err.message = message;
+    }
+  }
+
+  passed = caught;
+
+  if (expected instanceof RegExp) {
+    passed = expected.test(caught && caught.error);
+    expected = String(expected);
+  }
+
+  if (typeof expected === 'function' && caught) {
+    passed = caught.error instanceof expected;
+    caught.error = caught.error.constructor;
+  }
+
+  this._assert(typeof fn === 'function' && passed, {
+    message: defined(msg, 'should throw'),
+    operator: 'throws',
+    actual: caught && caught.error,
+    expected: expected,
+    error: !passed && caught && caught.error,
+    extra: extra
+  });
+};
+
+tape.Test.prototype.doesNotThrow = async function(fn, expected, msg, extra) {
+  var caught = undefined;
+
+  if (typeof expected === 'string') {
+    msg = expected;
+    expected = undefined;
+  }
+
+  try {
+    await fn();
+  } catch (err) {
+    caught = { error: err };
+  }
+  this._assert(!caught, {
+    message: defined(msg, 'should not throw'),
+    operator: 'throws',
+    actual: caught && caught.error,
+    expected: expected,
+    error: caught && caught.error,
+    extra: extra
+  });
 };
