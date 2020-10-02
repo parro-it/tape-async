@@ -4,7 +4,7 @@ const test = require(".");
 
 test("support async await functions", function* (t) {
 	const result = yield execa("node", ["fixtures/async-await-test"]);
-	t.equal(result.stdout.split("\n")[2], "ok 1 should be equal");
+	t.equal(result.stdout.split("\n")[2], "ok 1 should be strictly equal");
 });
 
 test("test.only is a function", (t) => {
@@ -16,7 +16,7 @@ test("support normal cb termination", function* (t) {
 		yield execa("node", ["fixtures/failing-test"]);
 		t.fail("Failure expected");
 	} catch (err) {
-		t.equal(err.stdout.split("\n")[2], "not ok 1 should be equal");
+		t.equal(err.stdout.split("\n")[2], "not ok 1 should be strictly equal");
 	}
 });
 
@@ -61,7 +61,7 @@ test("log test failures", function* (t) {
 		yield execa("node", ["fixtures/failing-test"]);
 		t.fail("Failure expected");
 	} catch (err) {
-		t.equal(err.stdout.split("\n")[2], "not ok 1 should be equal");
+		t.equal(err.stdout.split("\n")[2], "not ok 1 should be strictly equal");
 	}
 });
 
@@ -72,11 +72,11 @@ test("support tests end in cb", function* (t) {
 		`TAP version 13
 # first test
 first test start
-ok 1 should be equal
+ok 1 should be strictly equal
 first test end
 # second test
 second test start
-ok 2 should be equal
+ok 2 should be strictly equal
 second test end
 
 1..2
