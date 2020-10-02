@@ -1,27 +1,28 @@
-'use strict';
+"use strict";
 
-const tape = require('tape');
-const isGenerator = require('is-generator');
-const isPromise = require('is-promise');
-const co = require('co');
+const tape = require("tape");
+const isGenerator = require("is-generator");
+const isPromise = require("is-promise");
+const co = require("co");
 
 module.exports = tape;
 
-process.on('uncaughtException', err => {
-	process.stderr.write(`\nUnhandled exception occurred. One of your test may have failed silently.\n${err.stack}\n`);
+process.on("uncaughtException", (err) => {
+	process.stderr.write(
+		`\nUnhandled exception occurred. One of your test may have failed silently.\n${err.stack}\n`
+	);
 	process.exit(-1);
 });
 
-process.on('unhandledRejection', err => {
-	process.stderr.write(`\nUnhandled rejection occurred. One of your test may have failed silently.\n${err.stack}\n`);
+process.on("unhandledRejection", (err) => {
+	process.stderr.write(
+		`\nUnhandled rejection occurred. One of your test may have failed silently.\n${err.stack}\n`
+	);
 	process.exit(-1);
 });
 
 // Maintain tape@1 compatibility
-tape.Test.prototype._end = (
-	tape.Test.prototype._end ||
-	tape.Test.prototype.end
-);
+tape.Test.prototype._end = tape.Test.prototype._end || tape.Test.prototype.end;
 
 tape.Test.prototype.deferred = function () {
 	this._deferred = true;
@@ -32,15 +33,16 @@ tape.Test.prototype.run = function () {
 		return this._end();
 	}
 
-	this.emit('prerun');
+	this.emit("prerun");
 	this._deferred = false;
 
-	const success = () => setImmediate(() => {
-		this._end();
-		this.emit('run');
-	});
+	const success = () =>
+		setImmediate(() => {
+			this._end();
+			this.emit("run");
+		});
 
-	const failure = err	=> {
+	const failure = (err) => {
 		this.error(err);
 		return this._end();
 	};
@@ -56,7 +58,7 @@ tape.Test.prototype.run = function () {
 	}
 
 	if (isGenerator(result)) {
-		return co(function * () {
+		return co(function* () {
 			yield result;
 		})
 			.then(success)
@@ -64,12 +66,11 @@ tape.Test.prototype.run = function () {
 	}
 
 	if (isPromise(result)) {
-		return result.then(success)
-			.catch(failure);
+		return result.then(success).catch(failure);
 	}
 
 	if (!this._deferred) {
-		this.emit('run');
+		this.emit("run");
 	}
 
 	return true;

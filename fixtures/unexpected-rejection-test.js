@@ -1,6 +1,6 @@
-'use strict';
-const test = require('..');
+"use strict";
+const test = require("..");
 
-test('this test will fail', function * () {
-	throw new Error('unexpected');
+test("this test will fail", function* () {
+	throw new Error("unexpected");
 });

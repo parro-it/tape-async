@@ -1,8 +1,8 @@
-'use strict';
-const test = require('..');
+"use strict";
+const test = require("..");
 
-test('this test will fail', () => {
+test("this test will fail", () => {
 	setTimeout(() => {
-		throw new Error('unhandled');
+		throw new Error("unhandled");
 	}, 1);
 });

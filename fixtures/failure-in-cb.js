@@ -1,7 +1,7 @@
-'use strict';
-const test = require('..');
+"use strict";
+const test = require("..");
 
-test('this test will fail', t => {
+test("this test will fail", (t) => {
 	t.deferred();
 	setTimeout(() => {
 		t.equal(true, false);
