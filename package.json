@@ -2,7 +2,7 @@
   "name": "tape-async",
   "description": "A lite wrapper around tape to simplify async testing.",
   "repository": "parro-it/tape-async",
-  "version": "2.1.1",
+  "version": "2.3.0",
   "engines": {
     "node": ">=4.1"
   },
@@ -11,40 +11,19 @@
     "co": "^4.6.0",
     "is-generator": "^1.0.2",
     "is-promise": "^2.1.0",
-    "tape": "^4.5.0"
+    "tape": "^5.0.1"
   },
   "author": "Andrea Parodi",
   "scripts": {
-    "test": "node --harmony test | faucet && eslint ."
-  },
-  "eslintConfig": {
-    "extends": [
-      "js"
-    ],
-    "env": { "es6": true },
-    "parserOptions": {
-      "ecmaVersion": 8
-    },
-    "rules" : {
-      "no-param-reassign": "off"
-    }
-  },
-  "babel": {
-    "plugins": [
-      "syntax-async-functions",
-      "transform-async-to-generator"
-    ]
+
+    "test": "node --trace-warnings test && prettier --check *.js",
+    "format": "prettier --write *.js"
+
   },
   "devDependencies": {
-    "babel-cli": "^6.6.5",
-    "babel-plugin-syntax-async-functions": "^6.5.0",
-    "babel-plugin-transform-async-to-generator": "^6.7.0",
-    "eslint": "^2.4.0",
-    "eslint-config-js": "^5.0.0",
-    "execa": "^0.2.2",
-    "faucet": "0.0.1",
-    "sleep-promise": "^1.0.0",
-    "tape": "^4.5.0"
+    "execa": "^0.8.0",
+    "prettier": "2.1.2",
+    "sleep-promise": "^2.0.0"
   },
   "files": [
     "index.js"
